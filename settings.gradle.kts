@@ -8,3 +8,8 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
+include("cellulose-mixin-api")
+include("cellulose-accessor")
+include("cellulose-common")
+include("cellulose-server")
