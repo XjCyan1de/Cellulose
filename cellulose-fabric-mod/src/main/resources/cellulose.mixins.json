@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.github.xjcyan1de.cellulose.mixin",
+  "compatibilityLevel": "JAVA_11",
+  "mixins": [
+    "accessor.item.MusicDiscItem_Accessor",
+    "accessor.server.world.EntityTracker_Accessor",
+    "accessor.server.world.ThreadedAnvilChunkStorage_Accessor",
+    "accessor.world.biome.source.BiomeArray_Accessor",
+    "api.server.MinecraftServer_API",
+    "api.server.dedicated.MinecraftDedicatedServer_API",
+    "api.server.network.ServerPlayerEntity_API",
+    "api.sound.SoundEvent_API",
+    "api.util.Identifier_API",
+    "api.world.BlockView_API",
+    "api.world.World_API",
+    "api.world.chunk.Chunk_API"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

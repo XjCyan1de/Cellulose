@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "cellulose",
+  "version": "${version}",
+  "name": "Cellulose",
+  "description": "SpongeAPI implementation for Fabric",
+  "authors": [
+    "XjCyan1de"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/XjCyan1de/Cellulose"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "server": [
+      "com.github.xjcyan1de.cellulose.server.CelluloseServerMod"
+    ]
+  },
+  "mixins": [
+    "cellulose.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.5"
+  }
+}

@@ -9,7 +9,4 @@ pluginManagement {
     }
 }
 
-include("cellulose-mixin-api")
-include("cellulose-accessor")
-include("cellulose-common")
-include("cellulose-server")
+include("cellulose-fabric-mod")
