@@ -14,45 +14,43 @@ import java.util.Optional;
 
 @Mixin(BlockView.class)
 public abstract class BlockView_API implements PrimitiveGameVolume {
-    private BlockViewHook hook = new BlockViewHook((BlockView) this);
-
     @Override
     public int getMaximumLight() {
-        return hook.getMaximumLight();
+        return BlockViewHook.INSTANCE.getMaximumLight((BlockView) this);
     }
 
     @Override
     public int getEmittedLight(Vector3i position) {
-        return hook.getEmittedLight(position);
+        return BlockViewHook.INSTANCE.getEmittedLight((BlockView) this, position);
     }
 
     @Override
     public int getEmittedLight(int x, int y, int z) {
-        return hook.getEmittedLight(x, y, z);
+        return BlockViewHook.INSTANCE.getEmittedLight((BlockView) this, x, y, z);
     }
 
     @Override
     public int getHeight() {
-        return hook.getHeight();
+        return  BlockViewHook.INSTANCE.getHeight((BlockView) this);
     }
 
     @Override
     public Collection<? extends BlockEntity> getBlockEntities() {
-        return hook.getBlockEntities();
+        return BlockViewHook.INSTANCE.getBlockEntities((BlockView) this);
     }
 
     @Override
     public Optional<? extends BlockEntity> getBlockEntity(Vector3i position) {
-        return hook.getBlockEntity(position);
+        return BlockViewHook.INSTANCE.getBlockEntity((BlockView) this, position);
     }
 
     @Override
     public BlockState getBlock(int x, int y, int z) {
-        return hook.getBlock(x, y, z);
+        return BlockViewHook.INSTANCE.getBlock((BlockView) this,x, y, z);
     }
 
     @Override
     public FluidState getFluid(int x, int y, int z) {
-        return hook.getFluid(x, y, z);
+        return BlockViewHook.INSTANCE.getFluid((BlockView) this,x, y, z);
     }
 }

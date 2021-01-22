@@ -1,76 +1,34 @@
+@file:Suppress("CAST_NEVER_SUCCEEDS")
+
 package com.github.xjcyan1de.cellulose.hook.world
 
+import com.github.xjcyan1de.cellulose.util.asOptional
+import net.minecraft.util.math.BlockPos
 import net.minecraft.world.BlockView
 import org.spongepowered.api.block.BlockState
 import org.spongepowered.api.block.entity.BlockEntity
-import org.spongepowered.api.data.Key
-import org.spongepowered.api.data.value.Value
 import org.spongepowered.api.fluid.FluidState
-import org.spongepowered.api.world.volume.game.PrimitiveGameVolume
 import org.spongepowered.math.vector.Vector3i
 import java.util.*
 
-class BlockViewHook(
-    val handle: BlockView
-) : PrimitiveGameVolume {
-    override fun getBlockMin(): Vector3i {
-        TODO("Not yet implemented")
-    }
+object BlockViewHook {
+    fun getMaximumLight(blockView: BlockView): Int = blockView.maxLightLevel
 
-    override fun getBlockMax(): Vector3i {
-        TODO("Not yet implemented")
-    }
+    fun getEmittedLight(blockView: BlockView, position: Vector3i): Int =
+        getEmittedLight(blockView, position.x, position.y, position.z)
 
-    override fun getBlockSize(): Vector3i {
-        TODO("Not yet implemented")
-    }
+    fun getEmittedLight(blockView: BlockView, x: Int, y: Int, z: Int): Int = blockView.getLuminance(BlockPos(x, y, z))
 
-    override fun containsBlock(x: Int, y: Int, z: Int): Boolean {
-        TODO("Not yet implemented")
-    }
+    fun getHeight(blockView: BlockView): Int = blockView.height
 
-    override fun isAreaAvailable(x: Int, y: Int, z: Int): Boolean {
-        TODO("Not yet implemented")
-    }
+    fun getBlockEntities(blockView: BlockView): Collection<BlockEntity> = emptyList()
 
-    override fun getBlock(x: Int, y: Int, z: Int): BlockState {
-        TODO("Not yet implemented")
-    }
+    fun getBlockEntity(blockView: BlockView, position: Vector3i): Optional<BlockEntity> =
+        blockView.getBlockEntity(BlockPos(position.x, position.y, position.z)).asOptional()
 
-    override fun getFluid(x: Int, y: Int, z: Int): FluidState {
-        TODO("Not yet implemented")
-    }
+    fun getBlock(blockView: BlockView, x: Int, y: Int, z: Int): BlockState =
+        blockView.getBlockState(BlockPos(x, y, z)) as BlockState
 
-    override fun getHighestYAt(x: Int, z: Int): Int {
-        TODO("Not yet implemented")
-    }
-
-    override fun getBlockEntities(): MutableCollection<out BlockEntity> {
-        TODO("Not yet implemented")
-    }
-
-    override fun getBlockEntity(x: Int, y: Int, z: Int): Optional<out BlockEntity> {
-        TODO("Not yet implemented")
-    }
-
-    override fun <E : Any?> get(x: Int, y: Int, z: Int, key: Key<out Value<E>>?): Optional<E> {
-        TODO("Not yet implemented")
-    }
-
-    override fun <E : Any?, V : Value<E>?> getValue(x: Int, y: Int, z: Int, key: Key<V>?): Optional<V> {
-        TODO("Not yet implemented")
-    }
-
-    override fun supports(x: Int, y: Int, z: Int, key: Key<*>?): Boolean {
-        TODO("Not yet implemented")
-    }
-
-    override fun getKeys(x: Int, y: Int, z: Int): MutableSet<Key<*>> {
-        TODO("Not yet implemented")
-    }
-
-    override fun getValues(x: Int, y: Int, z: Int): MutableSet<Value.Immutable<*>> {
-        TODO("Not yet implemented")
-    }
-
+    fun getFluid(blockView: BlockView, x: Int, y: Int, z: Int): FluidState =
+        blockView.getFluidState(BlockPos(x, y, z)) as FluidState
 }
